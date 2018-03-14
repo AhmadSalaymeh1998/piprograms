@@ -20,8 +20,8 @@ void exit_signal_handler(int signo);
 //Stop
 void stop(void)
 {
-	 BP.set_motor_dps(PORT_B, 0);
-	 BP.set_motor_dps(PORT_C, 0);
+	 BP.set_motor_power(PORT_B, 0);
+	 BP.set_motor_power(PORT_C, 0);
 }
 
 //Move Forward
