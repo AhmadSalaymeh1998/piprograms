@@ -20,8 +20,11 @@ void exit_signal_handler(int signo);
 //Move Forward
 void fwd(void)
 {
-	 BP.set_motor_dps(PORT_B, 180);
-	 BP.set_motor_dps(PORT_C, 180);
+	 BP.set_motor_power(PORT_B, 40);
+	 BP.set_motor_power(PORT_C, 40);
+	 sleep(3);
+	 stop();
+
 }
 //Move Left
 void left(void)
@@ -40,6 +43,8 @@ void back(void)
 {
 	 BP.set_motor_dps(PORT_B, -180);
 	 BP.set_motor_dps(PORT_C, -180);
+	 sleep(3);
+	 stop();
 }
 //Stop
 void stop(void)
@@ -47,7 +52,6 @@ void stop(void)
 	 BP.set_motor_dps(PORT_B, 0);
 	 BP.set_motor_dps(PORT_C, 0);
 }
-
 int main()
 {
 	signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
