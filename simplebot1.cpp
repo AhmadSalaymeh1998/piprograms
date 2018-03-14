@@ -17,6 +17,13 @@ BrickPi3 BP;
 
 void exit_signal_handler(int signo);
 
+//Stop
+void stop(void)
+{
+	 BP.set_motor_dps(PORT_B, 0);
+	 BP.set_motor_dps(PORT_C, 0);
+}
+
 //Move Forward
 void fwd(void)
 {
@@ -46,12 +53,7 @@ void back(void)
 	 sleep(3);
 	 stop();
 }
-//Stop
-void stop(void)
-{
-	 BP.set_motor_dps(PORT_B, 0);
-	 BP.set_motor_dps(PORT_C, 0);
-}
+
 int main()
 {
 	signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
