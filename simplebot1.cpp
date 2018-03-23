@@ -71,7 +71,7 @@ int main()
 	while(true)
 	{
 		cout << "Press f (forward), b (backward), l(left), r (right), s (stop): " << endl;
-		cin.get(inp);	//Take input from the terminal
+		cin >> inp;	//Take input from the terminal
 		//Move the bot
 		if(inp=='f') {
 			  	fwd();
