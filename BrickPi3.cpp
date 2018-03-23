@@ -99,6 +99,10 @@ BrickPi3::BrickPi3(uint8_t addr){
     fatal_error("error: SPI address must be in the range of 1 to 255");
   }
   Address = addr;
+  set_motor_limits(PORT_A, 200, 0);
+  set_motor_limits(PORT_B, 200, 0);
+  set_motor_limits(PORT_C, 200, 0);
+  set_motor_limits(PORT_D, 200, 0);
 }
 
 int BrickPi3::spi_write_8(uint8_t msg_type, uint8_t value){
@@ -697,6 +701,7 @@ int BrickPi3::set_motor_dps(uint8_t port, int16_t dps){
 }
 
 int BrickPi3::set_motor_limits(uint8_t port, uint8_t power, uint16_t dps){
+  if(power > 200) power = 200;
   spi_array_out[0] = Address;
   spi_array_out[1] = BPSPI_MESSAGE_SET_MOTOR_LIMITS;
   spi_array_out[2] = port;
